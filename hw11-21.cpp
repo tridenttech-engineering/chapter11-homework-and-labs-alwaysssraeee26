@@ -3,50 +3,52 @@
 
 #include <iostream>
 #include <iomanip>
+#include <vector>
 using namespace std;
 
 // Function prototype
-double getAverage(double prices[], int numElements);
+double calculateAverage(const vector<double>& prices);
 
 int main()
 {
-    const int NUM_PRICES = 5;        // Number of stock prices
-    double prices[NUM_PRICES] = {0.0}; // Array to store stock prices
-    double avgPrice = 0.0;            // Variable to store the average price
+    const size_t NUM_PRICES = 5;   // Number of stock prices
+    vector<double> prices(NUM_PRICES); // Vector to store stock prices
+    double averagePrice = 0.0;         // Variable to store the average price
 
     // Input stock prices
-    cout << "Enter " << NUM_PRICES << " stock prices:" << endl;
-    for (int i = 0; i < NUM_PRICES; i++)
+    cout << "Enter " << NUM_PRICES << " stock prices:\n";
+    for (size_t i = 0; i < NUM_PRICES; ++i)
     {
         cout << "Price " << i + 1 << ": ";
         cin >> prices[i];
-        while (cin.fail() || prices[i] <= 0) // Input validation
+
+        // Validate input
+        while (cin.fail() || prices[i] <= 0.0)
         {
-            cin.clear(); // Clear the error state
+            cin.clear(); // Clear input error
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-            cout << "Invalid input. Please enter a positive numeric value: ";
+            cout << "Invalid input. Please enter a positive value: ";
             cin >> prices[i];
         }
     }
 
     // Calculate the average price
-    avgPrice = getAverage(prices, NUM_PRICES);
+    averagePrice = calculateAverage(prices);
 
     // Display the average price
-    cout << fixed << setprecision(2) << endl;
-    cout << "The average stock price is: $" << avgPrice << endl;
+    cout << fixed << setprecision(2);
+    cout << "\nThe average stock price is: $" << averagePrice << endl;
 
     return 0;
-} // end of main function
+}
 
-// ***** Function Definitions *****
-
-double getAverage(double prices[], int numElements)
+// Function to calculate the average stock price
+double calculateAverage(const vector<double>& prices)
 {
     double total = 0.0;
-    for (int i = 0; i < numElements; i++)
+    for (double price : prices)
     {
-        total += prices[i];
+        total += price;
     }
-    return total / numElements;
-} // end of getAverage function
+    return total / prices.size();
+}
