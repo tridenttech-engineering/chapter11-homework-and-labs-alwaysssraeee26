@@ -7,26 +7,28 @@ using namespace std;
 
 int main()
 {
-    const int NUM_PRICES = 5; // Number of stock prices
+    const int NUM_PRICES = 5;       // Number of stock prices
     double prices[NUM_PRICES] = {0.0}; // Array to store stock prices
-    double total = 0.0; // Variable to hold the total of stock prices
-    double average = 0.0; // Variable to hold the average stock price
+    double total = 0.0;               // Variable to hold the total of stock prices
+    double average = 0.0;             // Variable to hold the average stock price
 
     // Input stock prices
     cout << "Enter " << NUM_PRICES << " stock prices:" << endl;
-    for (int i = 0; i < NUM_PRICES; i++)
+    for (int i = 0; i < NUM_PRICES; i++) 
     {
-        do
+        cout << "Price " << i + 1 << ": ";
+        cin >> prices[i];
+        while (cin.fail() || prices[i] <= 0) 
         {
-            cout << "Price " << i + 1 << ": ";
+            cin.clear(); // Clear the error state
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input. Please enter a positive numeric value: ";
             cin >> prices[i];
-            if (prices[i] <= 0)
-                cout << "Please enter a valid positive price." << endl;
-        } while (prices[i] <= 0);
+        }
     }
 
-    // Calculate total
-    for (int i = 0; i < NUM_PRICES; i++)
+    // Calculate total using a for loop
+    for (int i = 0; i < NUM_PRICES; i++) 
     {
         total += prices[i];
     }
