@@ -10,13 +10,15 @@ double getAverage(double prices[], int numElements);
 
 int main()
 {
-    double prices[5] = {0.0}; // Array to store stock prices
-    double avgPrice = 0.0;    // Variable to store the average price
+    const int NUM_PRICES = 5;        // Number of stock prices
+    double prices[NUM_PRICES] = {0.0}; // Array to store stock prices
+    double avgPrice = 0.0;            // Variable to store the average price
 
-    // Enter stock prices
-    for (int i = 0; i < 5; i++)
+    // Input stock prices
+    cout << "Enter " << NUM_PRICES << " stock prices:" << endl;
+    for (int i = 0; i < NUM_PRICES; i++)
     {
-        cout << "Enter price for stock " << i + 1 << ": ";
+        cout << "Price " << i + 1 << ": ";
         cin >> prices[i];
         while (cin.fail() || prices[i] <= 0) // Input validation
         {
@@ -28,11 +30,11 @@ int main()
     }
 
     // Calculate the average price
-    avgPrice = getAverage(prices, 5);
+    avgPrice = getAverage(prices, NUM_PRICES);
 
     // Display the average price
     cout << fixed << setprecision(2) << endl;
-    cout << "Average stock price: $" << avgPrice << endl;
+    cout << "The average stock price is: $" << avgPrice << endl;
 
     return 0;
 } // end of main function
@@ -43,6 +45,8 @@ double getAverage(double prices[], int numElements)
 {
     double total = 0.0;
     for (int i = 0; i < numElements; i++)
+    {
         total += prices[i];
+    }
     return total / numElements;
 } // end of getAverage function
