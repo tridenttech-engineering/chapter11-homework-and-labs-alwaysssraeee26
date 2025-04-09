@@ -5,20 +5,20 @@
 #include <iomanip>
 using namespace std;
 
+// Function prototype
+double getAverage(double prices[], int numElements);
+
 int main()
 {
-    const int NUM_PRICES = 5;       // Number of stock prices
-    double prices[NUM_PRICES] = {0.0}; // Array to store stock prices
-    double total = 0.0;               // Variable to hold the total of stock prices
-    double average = 0.0;             // Variable to hold the average stock price
+    double prices[5] = {0.0}; // Array to store stock prices
+    double avgPrice = 0.0;    // Variable to store the average price
 
-    // Input stock prices
-    cout << "Enter " << NUM_PRICES << " stock prices:" << endl;
-    for (int i = 0; i < NUM_PRICES; i++) 
+    // Enter stock prices
+    for (int i = 0; i < 5; i++)
     {
-        cout << "Price " << i + 1 << ": ";
+        cout << "Enter price for stock " << i + 1 << ": ";
         cin >> prices[i];
-        while (cin.fail() || prices[i] <= 0) 
+        while (cin.fail() || prices[i] <= 0) // Input validation
         {
             cin.clear(); // Clear the error state
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
@@ -27,18 +27,22 @@ int main()
         }
     }
 
-    // Calculate total using a for loop
-    for (int i = 0; i < NUM_PRICES; i++) 
-    {
-        total += prices[i];
-    }
-
-    // Calculate average
-    average = total / NUM_PRICES;
+    // Calculate the average price
+    avgPrice = getAverage(prices, 5);
 
     // Display the average price
-    cout << fixed << setprecision(2);
-    cout << "\nThe average stock price is: $" << average << endl;
+    cout << fixed << setprecision(2) << endl;
+    cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
-}
+} // end of main function
+
+// ***** Function Definitions *****
+
+double getAverage(double prices[], int numElements)
+{
+    double total = 0.0;
+    for (int i = 0; i < numElements; i++)
+        total += prices[i];
+    return total / numElements;
+} // end of getAverage function
