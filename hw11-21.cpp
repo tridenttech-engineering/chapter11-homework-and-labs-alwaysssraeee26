@@ -1,5 +1,5 @@
-//Introductory21.cpp - Displays the average stock price
-//Created/revised by <your name> on <current date>
+// StockPriceAverage.cpp - calculates and displays the average stock price
+// Created/revised by <your name> on <current date>
 
 #include <iostream>
 #include <iomanip>
@@ -7,13 +7,36 @@ using namespace std;
 
 int main()
 {
-	double prices[10] = {96.5, 100.5, 100.5, 100.5, 99, 99, 99, 100, 98.5, 98.9};
-	double total = 0.0;
-	double average = 0.0;
+    const int NUM_PRICES = 5; // Number of stock prices
+    double prices[NUM_PRICES] = {0.0}; // Array to store stock prices
+    double total = 0.0; // Variable to hold the total of stock prices
+    double average = 0.0; // Variable to hold the average stock price
 
+    // Input stock prices
+    cout << "Enter " << NUM_PRICES << " stock prices:" << endl;
+    for (int i = 0; i < NUM_PRICES; i++)
+    {
+        do
+        {
+            cout << "Price " << i + 1 << ": ";
+            cin >> prices[i];
+            if (prices[i] <= 0)
+                cout << "Please enter a valid positive price." << endl;
+        } while (prices[i] <= 0);
+    }
 
-	cout << fixed << setprecision(2);
-	cout << "Average stock price: $" << average << endl;
-	return 0;
-}	//end of main function
+    // Calculate total
+    for (int i = 0; i < NUM_PRICES; i++)
+    {
+        total += prices[i];
+    }
 
+    // Calculate average
+    average = total / NUM_PRICES;
+
+    // Display the average price
+    cout << fixed << setprecision(2);
+    cout << "\nThe average stock price is: $" << average << endl;
+
+    return 0;
+}
