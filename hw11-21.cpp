@@ -25,7 +25,7 @@ int main()
     avgPrice = getAverage(prices, 5);
 
     // Display the average stock price with 2 decimal places
-    cout << fixed << setprecision(2) << endl;
+    cout << fixed << setprecision(2);  // Ensure 2 decimal places
     cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
