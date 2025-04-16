@@ -1,4 +1,5 @@
-// Lab11-21.cpp - calculates and displays the average stock price
+// Lab11-21.cpp - stores stock prices in an array
+// and displays the average price
 // Created/revised by <your name> on <current date>
 
 #include <iostream>
@@ -6,34 +7,34 @@
 using namespace std;
 
 // Function prototype
-double getAverage(double prices[], int size);
+double getAverage(double prices[], int numElements);
 
-int main() {
-    const int SIZE = 5;
-    double prices[SIZE];
-    double avgPrice;
+int main()
+{
+    double prices[5] = {0.0};
+    double avgPrice = 0.0;
 
-    // Input stock prices
-    for (int i = 0; i < SIZE; ++i) {
-        cout << "Enter stock price " << (i + 1) << ": ";
-        cin >> prices[i];
-    }
+    // Enter stock prices
+    for (int x = 0; x < 5; x += 1)
+    {
+        cout << "Price " << x + 1 << ": ";
+        cin >> prices[x];
+    } // end for
 
-    // Calculate average price
-    avgPrice = getAverage(prices, SIZE);
+    avgPrice = getAverage(prices, 5);
 
-    // Output result
-    cout << fixed << setprecision(2);
-    cout << "\nAverage stock price: $" << avgPrice << endl;
+    cout << fixed << setprecision(2) << endl;
+    cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
-}
+} // end of main function
 
-// Function to calculate average
-double getAverage(double prices[], int size) {
+// ***** Function Definitions *****
+
+double getAverage(double prices[], int numElements)
+{
     double total = 0.0;
-    for (int i = 0; i < size; ++i) {
-        total += prices[i];
-    }
-    return total / size;
-}
+    for (int x = 0; x < numElements; x += 1)
+        total += prices[x];
+    return total / numElements;
+} // end of getAverage function
