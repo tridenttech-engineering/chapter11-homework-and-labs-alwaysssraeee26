@@ -15,7 +15,7 @@ int main()
     double avgPrice = 0.0;
 
     // Enter stock prices
-    for (int x = 0; x < 5; x++) // Using a for loop to enter 5 prices
+    for (int x = 0; x < 5; x++)  // Using a for loop to enter 5 prices
     {
         cout << "Price " << x + 1 << ": ";
         cin >> prices[x];  // User enters each stock price
@@ -24,7 +24,7 @@ int main()
     // Calculate average price using the getAverage function
     avgPrice = getAverage(prices, 5);
 
-    // Display average price with 2 decimal places
+    // Display the average stock price with 2 decimal places
     cout << fixed << setprecision(2) << endl;
     cout << "Average stock price: $" << avgPrice << endl;
 
@@ -36,10 +36,10 @@ double getAverage(double prices[], int numElements)
 {
     double total = 0.0;
 
-    // Use a for loop to sum all the stock prices
+    // Sum all the stock prices using a for loop
     for (int x = 0; x < numElements; x++)
     {
-        total += prices[x];  // Add each stock price to total
+        total += prices[x];  // Add each stock price to the total
     }
 
     // Return the average price
