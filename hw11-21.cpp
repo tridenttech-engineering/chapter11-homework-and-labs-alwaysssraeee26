@@ -11,7 +11,7 @@ double getAverage(double prices[], int numElements);
 
 int main()
 {
-    double prices[5] = {0.0};
+    double prices[5] = {0.0};    // Array to store 5 stock prices
     double avgPrice = 0.0;
 
     // Enter stock prices
@@ -29,7 +29,7 @@ int main()
     return 0;
 } // end of main function
 
-// ***** Function Definitions *****
+// ***** Function Definition *****
 
 double getAverage(double prices[], int numElements)
 {
