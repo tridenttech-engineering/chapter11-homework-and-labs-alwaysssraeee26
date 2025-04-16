@@ -1,4 +1,4 @@
-// Lab11-21.cpp - stores stock prices in an array
+// Lab11-2.cpp - stores stock prices in an array
 // and displays the average price
 // Created/revised by <your name> on <current date>
 
@@ -11,7 +11,7 @@ double getAverage(double prices[], int numElements);
 
 int main()
 {
-    double prices[5] = {0.0};    // Array to store 5 stock prices
+    double prices[5] = {0.0};
     double avgPrice = 0.0;
 
     // Enter stock prices
