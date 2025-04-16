@@ -1,52 +1,47 @@
-//============================================================================
-// Name        : Lab11-2.cpp
-// Author      : <Your Name>
-// Date        : <Current Date>
-// Description : C++ program that stores stock prices in an array,
-//               calculates the average, and displays the result.
-//============================================================================
+// Lab11-21.cpp - stores stock prices in an array
+// and displays the average price
+// Created/revised by <Your Name> on <Current Date>
 
 #include <iostream>
 #include <iomanip>
-#include <array>
-
 using namespace std;
 
-// Constants
-const size_t NUM_PRICES = 5;
-
 // Function prototype
-double getAverage(const array<double, NUM_PRICES>& prices);
+double getAverage(double prices[], int numElements);
 
-int main() {
-    array<double, NUM_PRICES> prices{};
+int main()
+{
+    double prices[5] = {0.0};  // Array to store 5 stock prices
     double avgPrice = 0.0;
 
-    // Enter stock prices with input validation
-    for (size_t i = 0; i < NUM_PRICES; ++i) {
-        double input = 0.0;
-        cout << "Enter price " << (i + 1) << ": ";
-        while (!(cin >> input) || input < 0.0) {
-            cin.clear(); // clear error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
-            cout << "Invalid input. Enter a non-negative number: ";
-        }
-        prices[i] = input;
+    // Enter stock prices
+    for (int x = 0; x < 5; x++)  // Loop to enter 5 prices
+    {
+        cout << "Enter price " << (x + 1) << ": ";
+        cin >> prices[x];
     }
 
-    // Calculate and display average price
-    avgPrice = getAverage(prices);
+    // Calculate average price using the getAverage function
+    avgPrice = getAverage(prices, 5);
+
+    // Display the average stock price with 2 decimal places
     cout << fixed << setprecision(2);
     cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
-}
+} // end of main function
 
 // Function to calculate the average of stock prices
-double getAverage(const array<double, NUM_PRICES>& prices) {
+double getAverage(double prices[], int numElements)
+{
     double total = 0.0;
-    for (double price : prices) {
-        total += price;
+
+    // Sum all the stock prices
+    for (int x = 0; x < numElements; x++)
+    {
+        total += prices[x];
     }
-    return total / NUM_PRICES;
-}
+
+    // Return the average
+    return total / numElements;
+} // end of getAverage function
