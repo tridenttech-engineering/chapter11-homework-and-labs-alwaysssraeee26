@@ -6,34 +6,34 @@
 using namespace std;
 
 // Function prototype
-double getAverage(double prices[], int numElements);
+double getAverage(double prices[], int size);
 
-int main()
-{
-    double prices[5] = {0.0};   // Array to store 5 stock prices
-    double avgPrice = 0.0;
+int main() {
+    const int SIZE = 5;
+    double prices[SIZE];
+    double avgPrice;
 
-    // Enter stock prices
-    for (int x = 0; x < 5; x += 1)
-    {
-        cout << "Enter stock price " << x + 1 << ": ";
-        cin >> prices[x];
-    } // end for
+    // Input stock prices
+    for (int i = 0; i < SIZE; ++i) {
+        cout << "Enter stock price " << (i + 1) << ": ";
+        cin >> prices[i];
+    }
 
-    avgPrice = getAverage(prices, 5);
+    // Calculate average price
+    avgPrice = getAverage(prices, SIZE);
 
-    cout << fixed << setprecision(2) << endl;
-    cout << "Average stock price: $" << avgPrice << endl;
+    // Output result
+    cout << fixed << setprecision(2);
+    cout << "\nAverage stock price: $" << avgPrice << endl;
 
     return 0;
-} // end of main function
+}
 
-// ***** Function Definitions *****
-
-double getAverage(double prices[], int numElements)
-{
+// Function to calculate average
+double getAverage(double prices[], int size) {
     double total = 0.0;
-    for (int x = 0; x < numElements; x += 1)
-        total += prices[x];
-    return total / numElements;
-} // end of getAverage function
+    for (int i = 0; i < size; ++i) {
+        total += prices[i];
+    }
+    return total / size;
+}
