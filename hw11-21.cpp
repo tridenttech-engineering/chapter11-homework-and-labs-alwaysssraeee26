@@ -1,4 +1,4 @@
-// Lab11-2.cpp - stores stock prices in an array
+// Lab11-21.cpp - stores stock prices in an array
 // and displays the average price
 // Created/revised by <your name> on <current date>
 
