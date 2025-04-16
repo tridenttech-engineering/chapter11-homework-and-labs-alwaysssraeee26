@@ -1,5 +1,4 @@
-// Lab11-21.cpp - stores stock prices in an array
-// and displays the average price
+// Lab11-21.cpp - calculates and displays the average stock price
 // Created/revised by <your name> on <current date>
 
 #include <iostream>
@@ -7,49 +6,34 @@
 using namespace std;
 
 // Function prototype
-double getAverage(const double prices[], int numElements);
+double getAverage(double prices[], int numElements);
 
 int main()
 {
-    const int NUM_PRICES = 5;       // Number of stock prices
-    double prices[NUM_PRICES] = {0.0}; // Array to store stock prices
-    double avgPrice = 0.0;            // Variable to store the average price
+    double prices[5] = {0.0};   // Array to store 5 stock prices
+    double avgPrice = 0.0;
 
-    // Input stock prices
-    cout << "Enter " << NUM_PRICES << " stock prices:\n";
-    for (int i = 0; i < NUM_PRICES; ++i)
+    // Enter stock prices
+    for (int x = 0; x < 5; x += 1)
     {
-        cout << "Price " << i + 1 << ": ";
-        cin >> prices[i];
+        cout << "Enter stock price " << x + 1 << ": ";
+        cin >> prices[x];
+    } // end for
 
-        // Validate input
-        while (cin.fail() || prices[i] <= 0.0)
-        {
-            cin.clear(); // Clear the error state
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-            cout << "Invalid input. Please enter a positive value: ";
-            cin >> prices[i];
-        }
-    }
+    avgPrice = getAverage(prices, 5);
 
-    // Calculate the average price
-    avgPrice = getAverage(prices, NUM_PRICES);
-
-    // Display the average price
     cout << fixed << setprecision(2) << endl;
-    cout << "The average stock price is: $" << avgPrice << endl;
+    cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
 } // end of main function
 
 // ***** Function Definitions *****
 
-double getAverage(const double prices[], int numElements)
+double getAverage(double prices[], int numElements)
 {
     double total = 0.0;
-    for (int i = 0; i < numElements; ++i)
-    {
-        total += prices[i];
-    }
+    for (int x = 0; x < numElements; x += 1)
+        total += prices[x];
     return total / numElements;
 } // end of getAverage function
