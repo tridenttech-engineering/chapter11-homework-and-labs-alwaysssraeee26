@@ -10,8 +10,7 @@ using namespace std;
 double getAverage(double times[], int numElements);
 double getLowest(double times[], int numElements);
 
-// ***** Function Definitions *****
-
+// Function Definitions
 double getAverage(double times[], int numElements)
 {
     double total = 0.0;
