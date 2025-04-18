@@ -9,6 +9,21 @@ using namespace std;
 // Function prototype
 double getAverage(double prices[], int numElements);
 
+// Function to calculate the average of stock prices
+double getAverage(double prices[], int numElements)
+{
+    double total = 0.0;
+
+    // Sum all the stock prices
+    for (int x = 0; x < numElements; x++)
+    {
+        total += prices[x];
+    }
+
+    // Return the average
+    return total / numElements;
+} // end of getAverage function
+
 int main()
 {
     double prices[5] = {0.0};  // Array to store 5 stock prices
@@ -30,18 +45,3 @@ int main()
 
     return 0;
 } // end of main function
-
-// Function to calculate the average of stock prices
-double getAverage(double prices[], int numElements)
-{
-    double total = 0.0;
-
-    // Sum all the stock prices
-    for (int x = 0; x < numElements; x++)
-    {
-        total += prices[x];
-    }
-
-    // Return the average
-    return total / numElements;
-} // end of getAverage function
