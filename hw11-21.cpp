@@ -1,47 +1,55 @@
-// Lab11-21.cpp - stores stock prices in an array
-// and displays the average price
-// Created/revised by <Your Name> on <Current Date>
+// Lab11-21.cpp - stores finish times in an array
+// and displays the average and lowest times
+// Created/revised by <your name> on <current date>
 
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
-// Function prototype
-double getAverage(double prices[], int numElements);
+// Function prototypes
+double getAverage(double times[], int numElements);
+double getLowest(double times[], int numElements);
 
-// Function to calculate the average of stock prices
-double getAverage(double prices[], int numElements)
+// ***** Function Definitions *****
+
+double getAverage(double times[], int numElements)
 {
     double total = 0.0;
-
-    // Sum all the stock prices
-    for (int x = 0; x < numElements; x++)
-    {
-        total += prices[x];
-    }
-
-    // Return the average
+    for (int x = 0; x < numElements; x += 1)
+        total += times[x];
     return total / numElements;
 } // end of getAverage function
 
+double getLowest(double times[], int numElements)
+{
+    double lowest = times[0];
+    for (int x = 1; x < numElements; x += 1)
+    {
+        if (times[x] < lowest)
+            lowest = times[x];
+    } // end if
+    return lowest;
+} // end of getLowest function
+
 int main()
 {
-    double prices[5] = {0.0};  // Array to store 5 stock prices
-    double avgPrice = 0.0;
+    double finishTimes[5] = {0.0};
+    double avgTime = 0.0;
+    double lowestTime = 0.0;
 
-    // Enter stock prices
-    for (int x = 0; x < 5; x++)  // Loop to enter 5 prices
+    // Enter finish times
+    for (int x = 0; x < 5; x += 1)
     {
-        cout << "Enter price " << (x + 1) << ": ";
-        cin >> prices[x];
-    }
+        cout << "Time for race " << x + 1 << ": ";
+        cin >> finishTimes[x];
+    } // end for
 
-    // Calculate average price using the getAverage function
-    avgPrice = getAverage(prices, 5);
+    avgTime = getAverage(finishTimes, 5);
+    lowestTime = getLowest(finishTimes, 5);
 
-    // Display the average stock price with 2 decimal places
-    cout << fixed << setprecision(2);
-    cout << "Average stock price: $" << avgPrice << endl;
+    cout << fixed << setprecision(1) << endl;
+    cout << "Average 5K finish time: " << avgTime << endl;
+    cout << "Lowest 5K finish time: " << lowestTime << endl;
 
     return 0;
 } // end of main function
