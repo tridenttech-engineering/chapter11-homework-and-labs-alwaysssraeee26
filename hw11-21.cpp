@@ -1,5 +1,5 @@
-// Lab11-21.cpp - stores finish times in an array
-// and displays the average and lowest times
+// Lab11-21.cpp - stores stock prices in an array
+// and displays the average price
 // Created/revised by RaeLynn Chattman on 04/22/2025
 
 #include <iostream>
@@ -7,52 +7,58 @@
 using namespace std;
 
 // Function prototypes
-double getAverage(double times[], int numElements);
-double getLowest(double times[], int numElements);
+double getAverage(double prices[], int numElements);
+double getLowest(double prices[], int numElements);
 
 int main()
 {
-    double finishTimes[5] = {0.0};
-    double avgTime = 0.0;
-    double lowestTime = 0.0;
+    double prices[5] = {0.0};  // Array to store stock prices (or race times)
+    double avgPrice = 0.0;
+    double lowestPrice = 0.0;
 
-    // Enter finish times (or stock prices)
-    for (int x = 0; x < 5; x += 1)
+    // Prompt the user to enter stock prices
+    for (int i = 0; i < 5; i++)
     {
-        cout << "Time for race " << x + 1 << ": ";
-        cin >> finishTimes[x];
-    } // end for
+        cout << "Enter stock price " << (i + 1) << ": ";
+        cin >> prices[i];  // User inputs prices into the array
+    }
 
-    // Calculate average and lowest finish times (or stock prices)
-    avgTime = getAverage(finishTimes, 5);
-    lowestTime = getLowest(finishTimes, 5);
+    // Call functions to calculate average and lowest price
+    avgPrice = getAverage(prices, 5);
+    lowestPrice = getLowest(prices, 5);
 
-    cout << fixed << setprecision(1) << endl;
-    cout << "Average 5K finish time: " << avgTime << endl;
-    cout << "Lowest 5K finish time: " << lowestTime << endl;
+    // Display the calculated average and lowest price
+    cout << fixed << setprecision(2);  // Format output to 2 decimal places
+    cout << "Average stock price: $" << avgPrice << endl;
+    cout << "Lowest stock price: $" << lowestPrice << endl;
 
     return 0;
 } // end of main function
 
 // ***** Function Definitions *****
 
-double getAverage(double times[], int numElements)
+// Function to calculate average price
+double getAverage(double prices[], int numElements)
 {
     double total = 0.0;
-    for (int x = 0; x < numElements; x += 1)
+    for (int i = 0; i < numElements; i++)
     {
-        total += times[x];
+        total += prices[i];  // Accumulate total sum of prices
     }
-    return total / numElements;
+    return total / numElements;  // Return average
 } // end of getAverage function
 
-double getLowest(double times[], int numElements)
+// Function to calculate the lowest price
+double getLowest(double prices[], int numElements)
 {
-    double lowest = times[0];
-    for (int x = 1; x < numElements; x += 1)
+    double lowest = prices[0];  // Initialize lowest with the first price
+    for (int i = 1; i < numElements; i++)
     {
-        if (times[x] < lowest)
-            lowest = times[x];
-    } // end if
-    return lowest;
+        if (prices[i] < lowest)  // Compare with each price in the array
+        {
+            lowest = prices[i];  // Update lowest if a smaller price is found
+        }
+    }
+    return lowest;  // Return the lowest price found
 } // end of getLowest function
+
