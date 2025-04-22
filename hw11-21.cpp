@@ -17,15 +17,15 @@ int main()
     // Enter stock prices
     for (int x = 0; x < 5; x += 1)
     {
-        cout << "Enter stock price " << x + 1 << ": ";
+        cout << "Enter stock price " << (x + 1) << ": ";
         cin >> stockPrices[x];
     } // end for
 
     // Function call to get the average stock price
     avgPrice = getAverage(stockPrices, 5);
 
-    // Display the average stock price
-    cout << fixed << setprecision(2) << endl;
+    // Display the average stock price with precise formatting
+    cout << fixed << setprecision(2);
     cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
