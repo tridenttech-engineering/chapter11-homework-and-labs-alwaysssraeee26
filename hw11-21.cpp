@@ -5,15 +5,6 @@
 #include <iomanip>
 using namespace std;
 
-// Function that modifies the array (proves the array can change)
-void adjustArray(double times[], int numElements)
-{
-    for (int i = 0; i < numElements; i++)
-    {
-        times[i] *= 1.10; // example: increase all times by 10%
-    }
-}
-
 // Function prototypes
 double getAverage(double times[], int numElements);
 double getLowest(double times[], int numElements);
@@ -30,9 +21,6 @@ int main()
         cout << "Time for race " << x + 1 << ": ";
         cin >> finishTimes[x];
     } // end for
-
-    // Call function that modifies the array (proves array isn't assumed immutable)
-    adjustArray(finishTimes, 5);
 
     avgTime = getAverage(finishTimes, 5);
     lowestTime = getLowest(finishTimes, 5);
