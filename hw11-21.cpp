@@ -1,67 +1,66 @@
-// Lab11-21.cpp - stores stock prices in an array
-// and displays the average and lowest prices
-// Created/revised by RaeLynn Chattman on 04/22/2025
+// Lab11-21.cpp - stores finish times in an array
+// and displays the average and lowest times
 
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
+// Function that modifies the array (proves the array can change)
+void adjustArray(double times[], int numElements)
+{
+    for (int i = 0; i < numElements; i++)
+    {
+        times[i] *= 1.10; // example: increase all times by 10%
+    }
+}
+
 // Function prototypes
-double getAverage(double prices[], int numElements);
-double getLowest(double prices[], int numElements);
+double getAverage(double times[], int numElements);
+double getLowest(double times[], int numElements);
 
 int main()
 {
-    double stockPrices[5] = {0.0};
-    double avgPrice = 0.0;
-    double lowestPrice = 0.0;
+    double finishTimes[5] = {0.0};
+    double avgTime = 0.0;
+    double lowestTime = 0.0;
 
-    // Enter stock prices
-    for (int x = 0; x < 5; x++)
+    // Enter finish times
+    for (int x = 0; x < 5; x += 1)
     {
-        cout << "Enter stock price " << x + 1 << ": ";
-        cin >> stockPrices[x];
-    }
+        cout << "Time for race " << x + 1 << ": ";
+        cin >> finishTimes[x];
+    } // end for
 
-    // Modify the array: increase all prices by 5% (e.g., simulate tax or inflation)
-    for (int x = 0; x < 5; x++)
-    {
-        stockPrices[x] *= 1.05;
-    }
+    // Call function that modifies the array (proves array isn't assumed immutable)
+    adjustArray(finishTimes, 5);
 
-    // Calculate average and lowest of modified prices
-    avgPrice = getAverage(stockPrices, 5);
-    lowestPrice = getLowest(stockPrices, 5);
+    avgTime = getAverage(finishTimes, 5);
+    lowestTime = getLowest(finishTimes, 5);
 
-    // Display results
-    cout << fixed << setprecision(2) << endl;
-    cout << "Average stock price (after 5% increase): $" << avgPrice << endl;
-    cout << "Lowest stock price (after 5% increase): $" << lowestPrice << endl;
+    cout << fixed << setprecision(1) << endl;
+    cout << "Average 5K finish time: " << avgTime << endl;
+    cout << "Lowest 5K finish time: " << lowestTime << endl;
 
     return 0;
-}
+} // end of main function
 
-// Function to calculate average price
-double getAverage(double prices[], int numElements)
+// ***** Function Definitions *****
+
+double getAverage(double times[], int numElements)
 {
     double total = 0.0;
-    for (int x = 0; x < numElements; x++)
-    {
-        total += prices[x];
-    }
+    for (int x = 0; x < numElements; x += 1)
+        total += times[x];
     return total / numElements;
-}
+} // end of getAverage function
 
-// Function to find lowest price
-double getLowest(double prices[], int numElements)
+double getLowest(double times[], int numElements)
 {
-    double lowest = prices[0];
-    for (int x = 1; x < numElements; x++)
+    double lowest = times[0];
+    for (int x = 1; x < numElements; x += 1)
     {
-        if (prices[x] < lowest)
-        {
-            lowest = prices[x];
-        }
-    }
+        if (times[x] < lowest)
+            lowest = times[x];
+    } // end if
     return lowest;
-}
+} // end of getLowest function
