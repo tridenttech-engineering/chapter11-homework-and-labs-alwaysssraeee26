@@ -24,21 +24,4 @@ int main()
     // Calculate and display average price
     averagePrice = getAverage(prices, SIZE);
 
-    cout << fixed << setprecision(2) << endl;
-    cout << "Average stock price: $" << averagePrice << endl;
-
-    return 0;
-}
-
-// Function definition
-double getAverage(double prices[], int numElements)
-{
-    double total = 0.0;
-
-    for (int i = 0; i < numElements; i++)
-    {
-        total += prices[i];
-    }
-
-    return total / numElements;
-}
+    // Display average price with exact formatting (no extra blank lines)
