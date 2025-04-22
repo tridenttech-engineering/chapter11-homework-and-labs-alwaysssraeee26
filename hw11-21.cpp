@@ -1,55 +1,44 @@
-// Lab11-21.cpp - stores finish times in an array
-// and displays the average and lowest times
+// Lab11-21.cpp - stores stock prices in an array
+// and displays the average price
 
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
-// Function prototypes
-double getAverage(double times[], int numElements);
-double getLowest(double times[], int numElements);
+// Function prototype
+double getAverage(double prices[], int numElements);
 
 int main()
 {
-    double finishTimes[5] = {0.0};
-    double avgTime = 0.0;
-    double lowestTime = 0.0;
+    const int SIZE = 5;
+    double prices[SIZE] = {0.0};
+    double averagePrice = 0.0;
 
-    // Enter finish times
-    for (int x = 0; x < 5; x += 1)
+    // Enter stock prices
+    for (int i = 0; i < SIZE; i++)
     {
-        cout << "Time for race " << x + 1 << ": ";
-        cin >> finishTimes[x];
-    } // end for
+        cout << "Enter stock price " << (i + 1) << ": ";
+        cin >> prices[i];
+    }
 
-    avgTime = getAverage(finishTimes, 5);
-    lowestTime = getLowest(finishTimes, 5);
+    // Calculate and display average price
+    averagePrice = getAverage(prices, SIZE);
 
-    // Output format: 1 decimal place, matches "5K" wording
-    cout << fixed << setprecision(1) << endl;
-    cout << "Average 5K finish time: " << avgTime << endl;
-    cout << "Lowest 5K finish time: " << lowestTime << endl;
+    cout << fixed << setprecision(2) << endl;
+    cout << "Average stock price: $" << averagePrice << endl;
 
     return 0;
-} // end of main function
+}
 
-// ***** Function Definitions *****
-
-double getAverage(double times[], int numElements)
+// Function definition
+double getAverage(double prices[], int numElements)
 {
     double total = 0.0;
-    for (int x = 0; x < numElements; x += 1)
-        total += times[x];
-    return total / numElements;
-} // end of getAverage function
 
-double getLowest(double times[], int numElements)
-{
-    double lowest = times[0];
-    for (int x = 1; x < numElements; x += 1)
+    for (int i = 0; i < numElements; i++)
     {
-        if (times[x] < lowest)
-            lowest = times[x];
-    } // end if
-    return lowest;
-} // end of getLowest function
+        total += prices[i];
+    }
+
+    return total / numElements;
+}
