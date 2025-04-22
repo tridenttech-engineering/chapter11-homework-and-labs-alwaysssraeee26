@@ -17,24 +17,20 @@ int main()
     double lowestPrice = 0.0;
 
     // Enter stock prices
-    for (int x = 0; x < 5; x += 1)
+    for (int x = 0; x < 5; x++)
     {
         cout << "Enter stock price " << x + 1 << ": ";
         cin >> stockPrices[x];
     }
 
-    // Let's say we apply a 10% discount to all prices (modifying the array)
-    for (int x = 0; x < 5; x += 1)
-    {
-        stockPrices[x] *= 0.90; // apply 10% discount
-    }
-
+    // Calculate average and lowest price
     avgPrice = getAverage(stockPrices, 5);
     lowestPrice = getLowest(stockPrices, 5);
 
+    // Display results
     cout << fixed << setprecision(2) << endl;
-    cout << "Average stock price (after discount): $" << avgPrice << endl;
-    cout << "Lowest stock price (after discount): $" << lowestPrice << endl;
+    cout << "Average stock price: $" << avgPrice << endl;
+    cout << "Lowest stock price: $" << lowestPrice << endl;
 
     return 0;
 }
@@ -43,8 +39,10 @@ int main()
 double getAverage(double prices[], int numElements)
 {
     double total = 0.0;
-    for (int x = 0; x < numElements; x += 1)
+    for (int x = 0; x < numElements; x++)
+    {
         total += prices[x];
+    }
     return total / numElements;
 }
 
@@ -52,10 +50,12 @@ double getAverage(double prices[], int numElements)
 double getLowest(double prices[], int numElements)
 {
     double lowest = prices[0];
-    for (int x = 1; x < numElements; x += 1)
+    for (int x = 1; x < numElements; x++)
     {
         if (prices[x] < lowest)
+        {
             lowest = prices[x];
+        }
     }
     return lowest;
 }
