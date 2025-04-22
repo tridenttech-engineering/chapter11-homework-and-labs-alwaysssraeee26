@@ -1,3 +1,7 @@
+// Lab11-21-modified.cpp - calculates the average stock price
+// and displays the result
+// Created/revised by <your name> on <current date>
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -30,14 +34,16 @@ int main()
     // Calculate the average price
     avgPrice = getAverage(prices, NUM_PRICES);
 
-    // Display all prices and the average price
-    cout << fixed << setprecision(2) << endl;
+    // Display all prices entered
     cout << "Prices entered: ";
     for (int i = 0; i < NUM_PRICES; i++)
     {
         cout << prices[i] << " ";
     }
     cout << endl;
+
+    // Display average price
+    cout << fixed << setprecision(2);
     cout << "Average stock price: $" << avgPrice << endl;
 
     return 0;
@@ -52,7 +58,5 @@ double getAverage(const double prices[], int numElements)
     {
         total += prices[i];
     }
-
-    // Return average
     return total / numElements;
 }
