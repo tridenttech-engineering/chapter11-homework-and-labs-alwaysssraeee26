@@ -25,6 +25,7 @@ int main()
     avgTime = getAverage(finishTimes, 5);
     lowestTime = getLowest(finishTimes, 5);
 
+    // Output format: 1 decimal place, matches "5K" wording
     cout << fixed << setprecision(1) << endl;
     cout << "Average 5K finish time: " << avgTime << endl;
     cout << "Lowest 5K finish time: " << lowestTime << endl;
