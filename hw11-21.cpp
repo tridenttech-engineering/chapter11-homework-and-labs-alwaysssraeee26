@@ -1,5 +1,6 @@
 // Lab11-21.cpp - stores stock prices in an array
 // and displays the average price
+// Created/revised by RaeLynn Chattman on 04/22/2025
 
 #include <iostream>
 #include <iomanip>
@@ -10,18 +11,34 @@ double getAverage(double prices[], int numElements);
 
 int main()
 {
-    const int SIZE = 5;
-    double prices[SIZE] = {0.0};
-    double averagePrice = 0.0;
+    double stockPrices[5] = {0.0};
+    double avgPrice = 0.0;
 
     // Enter stock prices
-    for (int i = 0; i < SIZE; i++)
+    for (int x = 0; x < 5; x += 1)
     {
-        cout << "Enter stock price " << (i + 1) << ": ";
-        cin >> prices[i];
+        cout << "Enter stock price " << x + 1 << ": ";
+        cin >> stockPrices[x];
+    } // end for
+
+    // Function call to get the average stock price
+    avgPrice = getAverage(stockPrices, 5);
+
+    // Display the average stock price
+    cout << fixed << setprecision(2) << endl;
+    cout << "Average stock price: $" << avgPrice << endl;
+
+    return 0;
+} // end of main function
+
+// ***** Function Definitions *****
+
+double getAverage(double prices[], int numElements)
+{
+    double total = 0.0;
+    for (int x = 0; x < numElements; x += 1)
+    {
+        total += prices[x];
     }
-
-    // Calculate and display average price
-    averagePrice = getAverage(prices, SIZE);
-
-    // Display average price with exact formatting (no extra blank lines)
+    return total / numElements;
+} // end of getAverage function
