@@ -23,14 +23,20 @@ int main()
         cin >> stockPrices[x];
     }
 
-    // Calculate average and lowest price
+    // Modify the array: increase all prices by 5% (e.g., simulate tax or inflation)
+    for (int x = 0; x < 5; x++)
+    {
+        stockPrices[x] *= 1.05;
+    }
+
+    // Calculate average and lowest of modified prices
     avgPrice = getAverage(stockPrices, 5);
     lowestPrice = getLowest(stockPrices, 5);
 
     // Display results
     cout << fixed << setprecision(2) << endl;
-    cout << "Average stock price: $" << avgPrice << endl;
-    cout << "Lowest stock price: $" << lowestPrice << endl;
+    cout << "Average stock price (after 5% increase): $" << avgPrice << endl;
+    cout << "Lowest stock price (after 5% increase): $" << lowestPrice << endl;
 
     return 0;
 }
